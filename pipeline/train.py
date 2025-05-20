@@ -17,7 +17,7 @@ def train(input_train_file, output_model_file):
 
     df['AdoptionSpeedBinary'] = (df['AdoptionSpeed'] > mean_adoption_speed).astype(int)
 
-    X_train = df.drop(columns=['AdoptionSpeedBinary'])
+    X_train = df.drop(columns=['AdoptionSpeedBinary']).drop(columns=['AdoptionSpeed'])
     y_train = df['AdoptionSpeedBinary']
     pipeline.fit(X_train, y_train)
     joblib.dump(pipeline, output_model_file)

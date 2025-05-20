@@ -57,7 +57,7 @@ def split_data(input_filename, train_filename, val_filename):
 
     df['AdoptionSpeedBinary'] = (df['AdoptionSpeed'] > mean_adoption_speed).astype(int)
 
-    X = df.drop(columns=['AdoptionSpeedBinary'])
+    X = df.drop(columns=['AdoptionSpeedBinary']).drop(columns=['AdoptionSpeed'])
     y = df['AdoptionSpeedBinary']
 
     X_train, X_val, y_train, y_val = train_test_split(

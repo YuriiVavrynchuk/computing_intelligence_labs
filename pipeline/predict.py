@@ -14,7 +14,7 @@ def predict(model_name, input_val_filename, output_val_filename):
 
     df['AdoptionSpeedBinary'] = (df['AdoptionSpeed'] > mean_adoption_speed).astype(int)
 
-    X_val = df.drop(columns=['AdoptionSpeedBinary'])
+    X_val = df.drop(columns=['AdoptionSpeedBinary']).drop(columns=['AdoptionSpeed'])
     y_val = df['AdoptionSpeedBinary']
 
     y_pred = loaded_model.predict(X_val)
